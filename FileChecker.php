@@ -7,17 +7,17 @@ class FileChecker
     private $tmpFileName;
     private $maxFileSize;
 
-    public function __construct($uploadedFileName, $fileToUploadSize, $tmpFileName, $allowedMaxFileSize = 15)
+    public function __construct($file, $allowedMaxFileSize = 15)
     {
-        $this->uploadedFileName = $uploadedFileName;
-        $this->fileToUploadSize = $fileToUploadSize;
-        $this->tmpFileName = $tmpFileName;
-        $this->maxFileSize = $allowedMaxFileSize;
+        $this->uploadedFileName = $file["name"];
+        $this->fileToUploadSize = $file["size"];
+        $this->tmpFileName = $file["tmp_name"];
+        $this->maxFileSize = $allowedMaxFileSize * 1000000; // Convert MB to bytes
     }
 
     public function checkFileSize()
     {
-        if ($this->fileToUploadSize > $this->maxFileSize * 1000000) {
+        if ($this->fileToUploadSize > $this->maxFileSize) {
             echo "<div class='error'>Sorry, your file is too large.</div>";
             return false;
         }
@@ -64,7 +64,6 @@ class FileChecker
 
         return $group;
     }
-
 }
 
 ?>
