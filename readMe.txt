@@ -16,7 +16,6 @@ sudo apt install python3-pip
 pip install magika
 
 ----------------------- Source code files -----------------------
-# Create a folder to upload files into:
 
 
 # copy index.html and Magika.php, FileChecker.php to /var/www/html/
