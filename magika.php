@@ -17,14 +17,12 @@ if (!isset($_FILES["fileToUpload"]) || $_FILES["fileToUpload"]["error"] == UPLOA
 $allowedMaxFileSize = 15; // Maximum allowed file size in MB
 
 // Create an instance of FileChecker
-$fileChecker = new FileChecker($_FILES["fileToUpload"]["name"], $_FILES["fileToUpload"]["size"], $_FILES["fileToUpload"]["tmp_name"], $allowedMaxFileSize);
+$fileChecker = new FileChecker($_FILES["fileToUpload"], $allowedMaxFileSize);
 
 // Call executeCommand method
 $fileChecker->executeCommand();
 
-
+// Output file group information
 echo $fileChecker->getFileGroupInfo();
-
-
 
 ?>
